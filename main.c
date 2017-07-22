@@ -5,13 +5,25 @@
  * Data: 1017/07/22
  */
  
- #include <stdio.h>
- #include <stdlib.h>
- #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+
+#include "AppleWrapper.h"
  
- #include "include.h"
- 
- void main()
- {
- 
- }
+int main()
+{
+	struct tagApple *pApple;
+
+	pApple = GetInstance();
+	SetColor(pApple, 1);
+
+	int color = GetColor(pApple);
+	printf("color = %d\n", color);
+
+	ReleaseInstance(&pApple);
+	assert(pApple == 0);
+
+	return 0; 
+}
